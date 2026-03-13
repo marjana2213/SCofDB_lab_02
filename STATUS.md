@@ -19,69 +19,69 @@
 ### 1. PaymentService (`backend/app/application/payment_service.py`)
 
 **pay_order_unsafe()**
-- [ ] Реализовать чтение статуса заказа БЕЗ FOR UPDATE
-- [ ] Реализовать проверку статуса
-- [ ] Реализовать UPDATE orders SET status = 'paid'
-- [ ] Реализовать INSERT в order_status_history
-- [ ] НЕ использовать FOR UPDATE!
-- [ ] НЕ менять уровень изоляции!
+- ✅ Реализовать чтение статуса заказа БЕЗ FOR UPDATE
+- ✅ Реализовать проверку статуса
+- ✅ Реализовать UPDATE orders SET status = 'paid'
+- ✅ Реализовать INSERT в order_status_history
+- ✅ НЕ использовать FOR UPDATE!
+- ✅ НЕ менять уровень изоляции!
 
 **pay_order_safe()**
-- [ ] Установить REPEATABLE READ уровень изоляции
-- [ ] Реализовать SELECT ... FOR UPDATE для блокировки строки
-- [ ] Реализовать проверку статуса
-- [ ] Реализовать UPDATE orders SET status = 'paid'
-- [ ] Реализовать INSERT в order_status_history
-- [ ] Обязательно использовать FOR UPDATE!
+- ✅ Установить REPEATABLE READ уровень изоляции
+- ✅ Реализовать SELECT ... FOR UPDATE для блокировки строки
+- ✅ Реализовать проверку статуса
+- ✅ Реализовать UPDATE orders SET status = 'paid'
+- ✅ Реализовать INSERT в order_status_history
+- ✅ Обязательно использовать FOR UPDATE!
 
 **get_payment_history()**
-- [ ] Реализовать запрос истории оплат
-- [ ] Фильтровать по order_id и status = 'paid'
+- ✅ Реализовать запрос истории оплат
+- ✅ Фильтровать по order_id и status = 'paid'
 
 ### 2. Тесты
 
 **test_concurrent_payment_unsafe.py**
-- [ ] Создать фикстуру db_session
-- [ ] Создать фикстуру test_order
-- [ ] Реализовать тест, запускающий два параллельных pay_order_unsafe()
-- [ ] Проверить, что в истории ДВЕ записи 'paid' (race condition)
-- [ ] Добавить вывод: "⚠️ RACE CONDITION DETECTED!"
-- [ ] Тест должен ПРОХОДИТЬ
+- ✅ Создать фикстуру db_session
+- ✅ Создать фикстуру test_order
+- ✅ Реализовать тест, запускающий два параллельных pay_order_unsafe()
+- ✅ Проверить, что в истории ДВЕ записи 'paid' (race condition)
+- ✅ Добавить вывод: "⚠️ RACE CONDITION DETECTED!"
+- ✅ Тест должен ПРОХОДИТЬ
 
 **test_concurrent_payment_safe.py**
-- [ ] Создать фикстуры (аналогично unsafe)
-- [ ] Реализовать тест, запускающий два параллельных pay_order_safe()
-- [ ] Проверить, что в истории ОДНА запись 'paid'
-- [ ] Проверить, что одна попытка успешна, вторая - ошибка
-- [ ] Добавить вывод: "✅ RACE CONDITION PREVENTED!"
-- [ ] Тест должен ПРОХОДИТЬ
+- ✅ Создать фикстуры (аналогично unsafe)
+- ✅ Реализовать тест, запускающий два параллельных pay_order_safe()
+- ✅ Проверить, что в истории ОДНА запись 'paid'
+- ✅ Проверить, что одна попытка успешна, вторая - ошибка
+- ✅ Добавить вывод: "✅ RACE CONDITION PREVENTED!"
+- ✅ Тест должен ПРОХОДИТЬ
 
 ### 3. Отчёт REPORT.md
 
 **Раздел 1: Описание проблемы**
-- [ ] Объяснить, что такое race condition
-- [ ] Почему READ COMMITTED не защищает
-- [ ] Привести примеры из реальной жизни
+- ✅ Объяснить, что такое race condition
+- ✅ Почему READ COMMITTED не защищает
+- ✅ Привести примеры из реальной жизни
 
 **Раздел 2: Уровни изоляции**
-- [ ] Описать READ UNCOMMITTED
-- [ ] Описать READ COMMITTED
-- [ ] Описать REPEATABLE READ
-- [ ] Описать SERIALIZABLE
-- [ ] Сравнительная таблица
+- ✅ Описать READ UNCOMMITTED
+- ✅ Описать READ COMMITTED
+- ✅ Описать REPEATABLE READ
+- ✅ Описать SERIALIZABLE
+- ✅ Сравнительная таблица
 
 **Раздел 3: Решение проблемы**
-- [ ] Почему REPEATABLE READ решает проблему
-- [ ] Зачем нужен FOR UPDATE
-- [ ] Что без FOR UPDATE на REPEATABLE READ
-- [ ] Разница FOR UPDATE и FOR SHARE
+- ✅ Почему REPEATABLE READ решает проблему
+- ✅ Зачем нужен FOR UPDATE
+- ✅ Что без FOR UPDATE на REPEATABLE READ
+- ✅ Разница FOR UPDATE и FOR SHARE
 
 **Раздел 4: Рекомендации для продакшена**
-- [ ] Обосновать выбор ISOLATION LEVEL
-- [ ] Анализ производительности
-- [ ] Анализ безопасности
-- [ ] Альтернативные подходы
-- [ ] Итоговая рекомендация
+- ✅ Обосновать выбор ISOLATION LEVEL
+- ✅ Анализ производительности
+- ✅ Анализ безопасности
+- ✅ Альтернативные подходы
+- ✅ Итоговая рекомендация
 
 ## 🎯 Главное требование
 
